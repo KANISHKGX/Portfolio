@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanishk G X — Portfolio</title>
+<meta name="description" content="Kanishk G X — Computer Science undergrad. AI/ML, systems, and air traffic management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0E12;
+    --panel:#121920;
+    --panel-2:#0E1319;
+    --hairline:#232D36;
+    --text:#E7EDF1;
+    --muted:#7E8C97;
+    --signal:#3DE58C;
+    --signal-dim: rgba(61,229,140,0.15);
+    --amber:#FFB238;
+    --amber-dim: rgba(255,178,56,0.15);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--signal-dim); color:var(--text);}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(10,14,18,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hairline);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    font-family:var(--font-mono); font-weight:600; font-size:15px;
+    letter-spacing:0.05em; color:var(--signal);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:7px; height:7px; border-radius:50%; background:var(--signal); box-shadow:0 0 8px var(--signal); animation:blink 2s infinite;}
+  @keyframes blink{0%,100%{opacity:1;} 50%{opacity:0.3;}}
+  nav.links{display:flex; gap:28px; font-family:var(--font-mono); font-size:13px; color:var(--muted);}
+  nav.links a{transition:color 0.2s;}
+  nav.links a:hover, nav.links a:focus-visible{color:var(--signal);}
+  .status-pill{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em;
+    color:var(--signal); border:1px solid var(--hairline); background:var(--signal-dim);
+    padding:5px 10px; border-radius:3px; white-space:nowrap;
+  }
+  @media (max-width:760px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh; display:flex; align-items:center;
+    padding-top:90px; padding-bottom:60px;
+    position:relative; overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1120px; margin:0 auto; padding:0 24px;
+    display:grid; grid-template-columns:1fr 420px; gap:48px; align-items:center; width:100%;
+  }
+  @media (max-width:900px){ .hero-inner{grid-template-columns:1fr; text-align:center;} }
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.12em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  @media (max-width:900px){ .eyebrow{justify-content:center;} }
+  .eyebrow::before{content:'';width:18px;height:1px;background:var(--signal);}
+
+  h1.title{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height:1.02; letter-spacing:-0.01em;
+    margin-bottom:20px;
+  }
+  h1.title span{color:var(--signal);}
+
+  .tagline{
+    font-size:17px; color:var(--muted); max-width:480px; margin-bottom:28px;
+  }
+  @media (max-width:900px){ .tagline{margin:0 auto 28px;} }
+
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  @media (max-width:900px){ .hero-actions{justify-content:center;} }
+  .btn{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.03em;
+    padding:12px 20px; border-radius:3px; border:1px solid var(--hairline);
+    transition:border-color 0.2s, background 0.2s;
+  }
+  .btn-primary{background:var(--signal); color:#08110C; border-color:var(--signal); font-weight:600;}
+  .btn-primary:hover, .btn-primary:focus-visible{background:#33cc7c;}
+  .btn-ghost{color:var(--text);}
+  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--signal); color:var(--signal);}
+
+  /* ---------- RADAR SCOPE ---------- */
+  .scope-wrap{display:flex; justify-content:center;}
+  .scope{
+    position:relative; width:380px; height:380px; border-radius:50%;
+    background:radial-gradient(circle at center, #0D1319 0%, #0A0F14 70%, #080B0E 100%);
+    border:1px solid var(--hairline);
+    box-shadow:0 0 0 1px rgba(61,229,140,0.05), inset 0 0 60px rgba(0,0,0,0.6);
+    overflow:hidden;
+  }
+  @media (max-width:480px){ .scope{width:300px; height:300px;} }
+  .scope .ring{position:absolute; border:1px solid rgba(61,229,140,0.12); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);}
+  .ring.r1{width:100%; height:100%;}
+  .ring.r2{width:70%; height:70%;}
+  .ring.r3{width:40%; height:40%;}
+  .ring.r4{width:12%; height:12%;}
+  .scope .crosshair{position:absolute; background:rgba(61,229,140,0.08);}
+  .crosshair.h{width:100%; height:1px; top:50%; left:0;}
+  .crosshair.v{width:1px; height:100%; top:0; left:50%;}
+  .sweep{
+    position:absolute; top:0; left:0; width:100%; height:100%; border-radius:50%;
+    background:conic-gradient(from 0deg, rgba(61,229,140,0.35) 0deg, rgba(61,229,140,0) 55deg, transparent 360deg);
+    animation:spin 4.5s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .blip{
+    position:absolute; width:9px; height:9px; border-radius:50%;
+    background:var(--signal); box-shadow:0 0 10px var(--signal), 0 0 2px #fff;
+    transform:translate(-50%,-50%);
+    animation:pulse 2.2s ease-in-out infinite;
+    cursor:pointer;
+  }
+  .blip:hover, .blip:focus-visible{outline:none; box-shadow:0 0 16px var(--amber), 0 0 3px #fff; background:var(--amber);}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.45;}}
+  .blip-label{
+    position:absolute; font-family:var(--font-mono); font-size:10px; color:var(--muted);
+    white-space:nowrap; letter-spacing:0.05em; pointer-events:none;
+  }
+  .scope-center-label{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-family:var(--font-mono); font-size:10px; color:var(--hairline); text-align:center;
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:90px 0;}
+  .section-head{margin-bottom:44px;}
+  .section-num{
+    font-family:var(--font-mono); font-size:12px; color:var(--signal); letter-spacing:0.1em; display:block; margin-bottom:10px;
+  }
+  h2.section-title{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(1.6rem,3vw,2.2rem);
+  }
+  .section-sub{color:var(--muted); margin-top:10px; max-width:560px; font-size:15px;}
+  .divider{height:1px; background:var(--hairline); border:none; margin:0;}
+
+  /* ---------- FLIGHT STRIPS (PROJECTS) ---------- */
+  .strip{
+    border:1px solid var(--hairline); background:var(--panel);
+    border-left:3px solid var(--signal);
+    border-radius:2px; margin-bottom:14px; overflow:hidden;
+    transition:border-left-color 0.2s, transform 0.2s;
+  }
+  .strip:hover{border-left-color:var(--amber); transform:translateX(2px);}
+  .strip-row{
+    display:grid; grid-template-columns:150px 1fr 160px; gap:0;
+  }
+  @media (max-width:760px){ .strip-row{grid-template-columns:1fr;} }
+  .strip-cell{padding:16px 20px; border-right:1px solid var(--hairline);}
+  .strip-cell:last-child{border-right:none;}
+  @media (max-width:760px){ .strip-cell{border-right:none; border-bottom:1px solid var(--hairline);} .strip-cell:last-child{border-bottom:none;} }
+  .strip-callsign{font-family:var(--font-mono); font-weight:600; font-size:14px; color:var(--signal);}
+  .strip-sqk{font-family:var(--font-mono); font-size:10px; color:var(--muted); margin-top:4px;}
+  .strip-desc h3{font-family:var(--font-display); font-size:17px; margin-bottom:6px;}
+  .strip-desc p{font-size:14px; color:var(--muted); margin-bottom:8px;}
+  .strip-tags{display:flex; gap:6px; flex-wrap:wrap;}
+  .tag{
+    font-family:var(--font-mono); font-size:10px; letter-spacing:0.03em;
+    color:var(--muted); border:1px solid var(--hairline); padding:2px 7px; border-radius:2px;
+  }
+  .strip-status{display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:4px;}
+  .status-tag{
+    font-family:var(--font-mono); font-size:10px; letter-spacing:0.05em; padding:4px 8px; border-radius:2px;
+    text-transform:uppercase;
+  }
+  .status-live{color:var(--signal); background:var(--signal-dim); border:1px solid rgba(61,229,140,0.3);}
+  .status-progress{color:var(--amber); background:var(--amber-dim); border:1px solid rgba(255,178,56,0.3);}
+  .strip-link{font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:2px;}
+  .strip-link:hover{color:var(--signal);}
+
+  /* ---------- RESEARCH ---------- */
+  .research-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:760px){ .research-grid{grid-template-columns:1fr;} }
+  .research-card{
+    border:1px solid var(--hairline); background:var(--panel); padding:24px; border-radius:3px;
+  }
+  .research-card .rc-label{font-family:var(--font-mono); font-size:11px; color:var(--amber); letter-spacing:0.06em; margin-bottom:10px; display:block;}
+  .research-card h3{font-family:var(--font-display); font-size:18px; margin-bottom:10px;}
+  .research-card p{font-size:14px; color:var(--muted);}
+
+  /* ---------- EQUIPMENT (SKILLS) ---------- */
+  .equip-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--hairline); border:1px solid var(--hairline);}
+  @media (max-width:760px){ .equip-grid{grid-template-columns:repeat(2,1fr);} }
+  .equip-cell{background:var(--panel); padding:20px; }
+  .equip-code{font-family:var(--font-mono); font-size:11px; color:var(--signal); margin-bottom:8px; letter-spacing:0.05em;}
+  .equip-name{font-size:14px; color:var(--text);}
+
+  /* ---------- CONTACT ---------- */
+  .freq-panel{
+    border:1px solid var(--hairline); background:var(--panel); border-radius:3px;
+    padding:40px; display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center;
+  }
+  @media (max-width:760px){ .freq-panel{grid-template-columns:1fr; text-align:center;} }
+  .freq-num{font-family:var(--font-mono); font-size:13px; color:var(--muted); margin-bottom:8px;}
+  .freq-num span{color:var(--signal);}
+  .freq-title{font-family:var(--font-display); font-size:1.6rem; font-weight:700; margin-bottom:10px;}
+  .freq-sub{color:var(--muted); font-size:14px; max-width:420px;}
+  .contact-links{display:flex; flex-direction:column; gap:10px;}
+  .contact-links a{
+    font-family:var(--font-mono); font-size:13px; border:1px solid var(--hairline);
+    padding:10px 18px; border-radius:3px; text-align:center; transition:border-color 0.2s, color 0.2s;
+  }
+  .contact-links a:hover, .contact-links a:focus-visible{border-color:var(--signal); color:var(--signal);}
+
+  footer{padding:30px 0; text-align:center; color:var(--muted); font-family:var(--font-mono); font-size:11px; border-top:1px solid var(--hairline);}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>KGX</div>
+    <nav class="links">
+      <a href="#log">FLIGHT LOG</a>
+      <a href="#research">RESEARCH</a>
+      <a href="#equipment">EQUIPMENT</a>
+      <a href="#frequency">FREQUENCY</a>
+    </nav>
+    <div class="status-pill">● OPEN — SWE / AI-ML</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">CALLSIGN KGX · CHENNAI, IN</div>
+      <h1 class="title">Kanishk G X<br><span>builds systems</span> that navigate complexity.</h1>
+      <p class="tagline">Computer Science undergrad at St. Joseph's College of Engineering. Working across AI/ML, backend systems, and air traffic management — currently contributing to TU Delft's BlueSky ATC simulator and targeting SWE roles at Goldman Sachs.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#log">View Flight Log ↓</a>
+        <a class="btn btn-ghost" href="#frequency">Get In Touch</a>
+      </div>
+    </div>
+    <div class="scope-wrap">
+      <div class="scope" role="img" aria-label="Radar scope with navigation points for Flight Log, Research, Equipment, and Frequency sections">
+        <div class="sweep"></div>
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+        <div class="ring r4"></div>
+        <div class="crosshair h"></div>
+        <div class="crosshair v"></div>
+        <a href="#log" class="blip" style="top:28%; left:65%; animation-delay:0s;" tabindex="0" aria-label="Go to Flight Log"></a>
+        <span class="blip-label" style="top:22%; left:68%;">LOG</span>
+
+        <a href="#research" class="blip" style="top:70%; left:30%; animation-delay:0.5s;" tabindex="0" aria-label="Go to Research"></a>
+        <span class="blip-label" style="top:74%; left:15%;">RESEARCH</span>
+
+        <a href="#equipment" class="blip" style="top:22%; left:25%; animation-delay:1s;" tabindex="0" aria-label="Go to Equipment"></a>
+        <span class="blip-label" style="top:16%; left:8%;">EQUIP</span>
+
+        <a href="#frequency" class="blip" style="top:75%; left:72%; animation-delay:1.5s;" tabindex="0" aria-label="Go to Frequency"></a>
+        <span class="blip-label" style="top:79%; left:66%;">FREQ</span>
+
+        <div class="scope-center-label">KGX-1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="log">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01 // ACTIVE &amp; COMPLETED</span>
+      <h2 class="section-title">Flight Log</h2>
+      <p class="section-sub">Projects logged as flight strips — callsign, route, and current status, same as a real ATC board.</p>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">FIN-SIGHT</div>
+          <div class="strip-sqk">SQK 4471</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>FinSight — Quantitative Equity Scoring Platform</h3>
+          <p>Ensemble scoring engine (60/40 blend) with a Random Forest model reading candlestick signals, live stock detail pages over WebSocket.</p>
+          <div class="strip-tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">RandomForest</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-live">Built &amp; documented</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">UX-INTEL</div>
+          <div class="strip-sqk">SQK 2290</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>UX Intelligence Agent</h3>
+          <p>Multi-agent pipeline evaluating UI screenshots against Nielsen's 10 usability heuristics, orchestrated across Gemini Flash, GPT-4o, and n8n.</p>
+          <div class="strip-tags"><span class="tag">n8n</span><span class="tag">Gemini Flash</span><span class="tag">GPT-4o</span><span class="tag">LangGraph (in progress)</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-progress">Migrating to FastAPI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">BSKY-JIT</div>
+          <div class="strip-sqk">SQK 0626</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>BlueSky ATC Simulator — Numba JIT Optimization</h3>
+          <p>Open-source contribution to TU Delft's BlueSky air traffic simulator (Issue #626): Numba JIT acceleration for <code>aero.py</code> and <code>_geo.py</code>, benchmarked at ~40–70% faster execution, built with a collaborator.</p>
+          <div class="strip-tags"><span class="tag">Python</span><span class="tag">Numba</span><span class="tag">pytest</span><span class="tag">Open Source</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-progress">PR in progress</span>
+          <a class="strip-link" href="https://github.com/KANISHKGX/bluesky" target="_blank" rel="noopener">github.com/KANISHKGX/bluesky ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">NCO-MAP</div>
+          <div class="strip-sqk">SQK 0050</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>MoSPI NCO Occupation Mapping System</h3>
+          <p>Semantic occupation-mapping system using FAISS retrieval tuned with a Grey Wolf Optimizer. Finished Top 50 of 5,000+ teams in a national challenge.</p>
+          <div class="strip-tags"><span class="tag">FAISS</span><span class="tag">Grey Wolf Optimizer</span><span class="tag">NLP</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-live">Top 50 / 5,000+ teams</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">ROCKGUARD</div>
+          <div class="strip-sqk">SQK 2400</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>RockGuard</h3>
+          <p>Data-visualization dashboard built in a 24-hour hackathon window. Winner, Makeathon 3.0.</p>
+          <div class="strip-tags"><span class="tag">Dashboard</span><span class="tag">Data Viz</span><span class="tag">Hackathon</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-live">Makeathon 3.0 — Winner</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02 // RESEARCH</span>
+      <h2 class="section-title">Research</h2>
+      <p class="section-sub">Longer-horizon work sitting at the intersection of AI/ML and infrastructure.</p>
+    </div>
+    <div class="research-grid">
+      <div class="research-card">
+        <span class="rc-label">IN PREPARATION</span>
+        <h3>DGCA-Aware UTM Governance Framework for Indian Urban Air Mobility</h3>
+        <p>An IEEE-format paper proposing a regulatory-aware unmanned traffic management framework aligned with India's DGCA rules, aimed at Track 8 venues. Core motivation: the same ATC/UAM domain behind the BlueSky contribution above.</p>
+      </div>
+      <div class="research-card">
+        <span class="rc-label">IN PROGRESS · TARGETING SIH 2026</span>
+        <h3>CropWhisperX</h3>
+        <p>A self-supervised multimodal framework for predictive crop water-stress detection, combining Wav2Vec2 and Plant2Vec representations. Being prepared for IEEE / Springer and Smart India Hackathon 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="equipment">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03 // EQUIPMENT</span>
+      <h2 class="section-title">Onboard Equipment</h2>
+      <p class="section-sub">The stack in regular rotation.</p>
+    </div>
+    <div class="equip-grid">
+      <div class="equip-cell"><div class="equip-code">LANG.01</div><div class="equip-name">Python</div></div>
+      <div class="equip-cell"><div class="equip-code">LANG.02</div><div class="equip-name">Java</div></div>
+      <div class="equip-cell"><div class="equip-code">SVC.01</div><div class="equip-name">FastAPI</div></div>
+      <div class="equip-cell"><div class="equip-code">DB.01</div><div class="equip-name">PostgreSQL</div></div>
+      <div class="equip-cell"><div class="equip-code">FE.01</div><div class="equip-name">React</div></div>
+      <div class="equip-cell"><div class="equip-code">AI.01</div><div class="equip-name">LangChain / LangGraph</div></div>
+      <div class="equip-cell"><div class="equip-code">AI.02</div><div class="equip-name">FAISS</div></div>
+      <div class="equip-cell"><div class="equip-code">AI.03</div><div class="equip-name">LLaMA</div></div>
+      <div class="equip-cell"><div class="equip-code">AUTO.01</div><div class="equip-name">n8n</div></div>
+      <div class="equip-cell"><div class="equip-code">NET.01</div><div class="equip-name">Cisco Networking (CCNA)</div></div>
+      <div class="equip-cell"><div class="equip-code">DSA.01</div><div class="equip-name">DSA — Java / Python</div></div>
+      <div class="equip-cell"><div class="equip-code">DEP.01</div><div class="equip-name">Vercel / Docker</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="frequency">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04 // CONTACT</span>
+      <h2 class="section-title">Frequency</h2>
+    </div>
+    <div class="freq-panel">
+      <div>
+        <div class="freq-num">TUNED TO <span>121.5 MHz</span></div>
+        <div class="freq-title">Open to SWE, AI/ML, and agentic-systems roles.</div>
+        <p class="freq-sub">Based in Chennai. Reach out directly, or find the code trail on GitHub.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:[email protected]">✉ EMAIL — add your address</a>
+        <a href="https://github.com/KANISHKGX" target="_blank" rel="noopener">⌥ GITHUB — /KANISHKGX</a>
+        <a href="#">in LINKEDIN — add your link</a>
+        <a href="#">↓ RESUME — add PDF link</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  KGX // TRANSMISSION END // BUILT FROM CHENNAI
+</footer>
+
+</body>
+</html>
