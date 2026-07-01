@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kanishk G X — Portfolio</title>
-<meta name="description" content="Kanishk G X — Computer Science undergrad. AI/ML, systems, and air traffic management.">
+<meta name="description" content="Kanishk KS — Computer Science undergrad. AI/ML, systems, and air traffic management.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -205,6 +205,7 @@
 
   /* ---------- RESEARCH ---------- */
   .research-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .research-grid.single{grid-template-columns:1fr; max-width:560px;}
   @media (max-width:760px){ .research-grid{grid-template-columns:1fr;} }
   .research-card{
     border:1px solid var(--hairline); background:var(--panel); padding:24px; border-radius:3px;
@@ -246,7 +247,9 @@
   <div class="nav-inner">
     <div class="logo"><span class="dot"></span>KGX</div>
     <nav class="links">
-      <a href="#log">FLIGHT LOG</a>
+      <a href="#log">LOG</a>
+      <a href="#hours">HOURS</a>
+      <a href="#charter">CHARTER</a>
       <a href="#research">RESEARCH</a>
       <a href="#equipment">EQUIPMENT</a>
       <a href="#frequency">FREQUENCY</a>
@@ -259,7 +262,7 @@
   <div class="hero-inner">
     <div>
       <div class="eyebrow">CALLSIGN KGX · CHENNAI, IN</div>
-      <h1 class="title">Kanishk KS<br><span>builds systems</span> that navigate complexity.</h1>
+      <h1 class="title">Kanishk G X<br><span>builds systems</span> that navigate complexity.</h1>
       <p class="tagline">Computer Science undergrad at St. Joseph's College of Engineering. Working across AI/ML, backend systems, and air traffic management — currently contributing to TU Delft's BlueSky ATC simulator and targeting SWE roles at Goldman Sachs.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#log">View Flight Log ↓</a>
@@ -394,23 +397,95 @@
 
 <hr class="divider">
 
+<section id="hours">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02 // LOGGED HOURS</span>
+      <h2 class="section-title">Flight Hours</h2>
+      <p class="section-sub">Internships — time logged under supervision before flying solo.</p>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">APT-GURU</div>
+          <div class="strip-sqk">SQK 1001</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>ML Intern — Aptitude Guru</h3>
+          <p>Built a Retrieval-Augmented Generation pipeline for internal use, combining dense retrieval with a local LLaMA model for grounded responses.</p>
+          <div class="strip-tags"><span class="tag">FAISS</span><span class="tag">LLaMA</span><span class="tag">LangChain</span><span class="tag">RAG</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-live">Completed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">MAKE-VIS</div>
+          <div class="strip-sqk">SQK 1002</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>UI/UX Intern — MAKE Vision</h3>
+          <p>Worked on interface design and user-experience groundwork, later folded into the design instincts behind the UX Intelligence Agent above.</p>
+          <div class="strip-tags"><span class="tag">UI/UX</span><span class="tag">Design Systems</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-live">Completed</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="charter">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03 // CHARTER OPS</span>
+      <h2 class="section-title">Charter Ops</h2>
+      <p class="section-sub">Freelance work — commissioned runs outside the scheduled log, sourced and delivered end to end.</p>
+    </div>
+
+    <div class="strip">
+      <div class="strip-row">
+        <div class="strip-cell">
+          <div class="strip-callsign">DR-VISHNU</div>
+          <div class="strip-sqk">SQK 3007</div>
+        </div>
+        <div class="strip-cell strip-desc">
+          <h3>Dr. Vishnu's Dental Care — Navalur</h3>
+          <p>Sourced via cold outreach to clinics along the OMR–Navalur corridor. Designed, built, and deployed a custom website on a purchased domain, hosted on Vercel.</p>
+          <div class="strip-tags"><span class="tag">React</span><span class="tag">Vercel</span><span class="tag">Client Work</span></div>
+        </div>
+        <div class="strip-cell strip-status">
+          <span class="status-tag status-live">Live</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
 <section id="research">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num">02 // RESEARCH</span>
+      <span class="section-num">04 // RESEARCH</span>
       <h2 class="section-title">Research</h2>
       <p class="section-sub">Longer-horizon work sitting at the intersection of AI/ML and infrastructure.</p>
     </div>
-    <div class="research-grid">
+    <div class="research-grid single">
       <div class="research-card">
         <span class="rc-label">IN PREPARATION</span>
         <h3>DGCA-Aware UTM Governance Framework for Indian Urban Air Mobility</h3>
         <p>An IEEE-format paper proposing a regulatory-aware unmanned traffic management framework aligned with India's DGCA rules, aimed at Track 8 venues. Core motivation: the same ATC/UAM domain behind the BlueSky contribution above.</p>
-      </div>
-      <div class="research-card">
-        <span class="rc-label">IN PROGRESS · TARGETING SIH 2026</span>
-        <h3>CropWhisperX</h3>
-        <p>A self-supervised multimodal framework for predictive crop water-stress detection, combining Wav2Vec2 and Plant2Vec representations. Being prepared for IEEE / Springer and Smart India Hackathon 2026.</p>
       </div>
     </div>
   </div>
@@ -421,7 +496,7 @@
 <section id="equipment">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num">03 // EQUIPMENT</span>
+      <span class="section-num">05 // EQUIPMENT</span>
       <h2 class="section-title">Onboard Equipment</h2>
       <p class="section-sub">The stack in regular rotation.</p>
     </div>
@@ -447,7 +522,7 @@
 <section id="frequency">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num">04 // CONTACT</span>
+      <span class="section-num">06 // CONTACT</span>
       <h2 class="section-title">Frequency</h2>
     </div>
     <div class="freq-panel">
@@ -457,10 +532,10 @@
         <p class="freq-sub">Based in Chennai. Reach out directly, or find the code trail on GitHub.</p>
       </div>
       <div class="contact-links">
-        <a href="mailto:[email protected]">✉ EMAIL — add your address</a>
+        <a href="mailto:kanishkworkoff@gmail.com">✉ EMAIL — kanishkworkoff@gmail.com</a>
         <a href="https://github.com/KANISHKGX" target="_blank" rel="noopener">⌥ GITHUB — /KANISHKGX</a>
-        <a href="#">in LINKEDIN — add your link</a>
-        <a href="#">↓ RESUME — add PDF link</a>
+        <a href="https://www.linkedin.com/in/kanishk-ks-018b56363/" target="_blank" rel="noopener">in LINKEDIN — /kanishk-ks</a>
+        <a href="https://drive.google.com/file/d/1DEG6S5cRfZj3ASulYIPLRrBOhwg-OgiU/view?usp=sharing" target="_blank" rel="noopener">↓ RESUME — view PDF</a>
       </div>
     </div>
   </div>
